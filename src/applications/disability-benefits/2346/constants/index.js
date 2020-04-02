@@ -39,6 +39,7 @@ export const schemaFields = {
   suppliesField: 'supplies',
   viewAddBatteriesField: 'view:AddBatteries',
   viewAddAccessoriesField: 'view:AddAccessories',
+  useThisAddressField: 'useThisAddress',
 };
 
 export const militaryStates = states.USA.filter(
