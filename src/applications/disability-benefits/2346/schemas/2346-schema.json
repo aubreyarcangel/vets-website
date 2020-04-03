@@ -321,7 +321,8 @@
       "enum": [
         "permanentAddress",
         "temporaryAddress"
-      ]
+      ],
+      "default": "permanentAddress"
     }
   },
   "properties": {
