@@ -1,13 +1,12 @@
 import AddressViewField from 'platform/forms-system/src/js/components/AddressViewField';
-import ReviewCardField from 'platform/forms-system/src/js/components/ReviewCardField';
 import React from 'react';
+import AddressArrayWidget from '../../components/addressFields/AddressArrayWidget';
 import orderSupplyPageContent from '../../components/oderSupplyPageContent';
 import orderAccessoriesPageContent from '../../components/orderAccessoriesPageContent';
 import SelectArrayItemsAccessoriesWidget from '../../components/SelectArrayItemsAccessoriesWidget';
 import SelectArrayItemsBatteriesWidget from '../../components/SelectArrayItemsBatteriesWidget';
 import { schemaFields } from '../../constants';
 import fullSchema from '../2346-schema.json';
-import { addressUISchema } from '../address-schema';
 
 const { viewAddAccessoriesField, viewAddBatteriesField } = schemaFields;
 
@@ -27,45 +26,20 @@ const emailUIDescription = (
   </>
 );
 
-const emptySpace = (
-  <>
-    <br />
-  </>
-);
-
 export default {
   'ui:title': fullSchema.title,
   'ui:options': {
     hideTitle: false,
   },
   sharedUISchemas: {
-    permAddressUI: {
-      ...addressUISchema(true, 'permanentAddress', () => true),
-      'ui:title': 'Permanent Address',
-      'ui:field': ReviewCardField,
-      'ui:widget': 'radio',
+    addressUI: {
+      'ui:title': '',
+      'ui:field': 'StringField',
+      'ui:widget': AddressArrayWidget,
       'ui:options': {
+        showFieldLabel: 'label',
+        keepInPageOnReview: true,
         viewComponent: AddressViewField,
-      },
-    },
-    tempAddressUI: {
-      ...addressUISchema(true, 'temporaryAddress', () => true),
-      'ui:title': 'Temporary Address',
-      'ui:field': ReviewCardField,
-      'ui:widget': 'radio',
-      'ui:options': {
-        viewComponent: AddressViewField,
-      },
-    },
-    selectedAddressUI: {
-      'ui:title': 'Select which address to send your products to:',
-      'ui:description': emptySpace,
-      'ui:widget': 'radio',
-      'ui:options': {
-        labels: {
-          permanentAddress: 'Permanent Address',
-          temporaryAddress: 'Temporary Address',
-        },
       },
     },
     emailUI: {

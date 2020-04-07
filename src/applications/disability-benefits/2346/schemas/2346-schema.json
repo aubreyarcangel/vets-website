@@ -315,14 +315,6 @@
     "date": {
       "pattern": "^(\\d{4}|XXXX)-(0[1-9]|1[0-2]|XX)-(0[1-9]|[1-2][0-9]|3[0-1]|XX)$",
       "type": "string"
-    },
-    "selectedAddress": {
-      "type": "string",
-      "enum": [
-        "permanentAddress",
-        "temporaryAddress"
-      ],
-      "default": "permanentAddress"
     }
   },
   "properties": {
@@ -338,11 +330,16 @@
     "fullName": {
       "$ref": "#/definitions/fullName"
     },
-    "permanentAddress": {
-      "$ref": "#/definitions/address"
-    },
-    "temporaryAddress": {
-      "$ref": "#/definitions/address"
+    "address": {
+      "type": "object",
+      "properties": {
+        "permanentAddress": {
+          "$ref": "#/definitions/address"
+        },
+        "temporaryAddress": {
+          "$ref": "#/definitions/address"
+        }
+      }
     },
     "gender": {
       "$ref": "#/definitions/gender"
@@ -352,9 +349,6 @@
     },
     "supplies": {
       "$ref": "#/definitions/supplies"
-    },
-    "selectedAddress": {
-      "$ref": "#/defintions/selectedAddress"
     }
   },
   "required": [

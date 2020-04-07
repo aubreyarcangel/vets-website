@@ -16,13 +16,10 @@ const {
 } = fullSchemaMDOT.definitions;
 
 const {
-  permAddressField,
-  tempAddressField,
   emailField,
   suppliesField,
   viewAddAccessoriesField,
   viewAddBatteriesField,
-  selectedAddressField,
 } = schemaFields;
 
 const {
@@ -31,9 +28,7 @@ const {
   addBatteriesUI,
   batteriesUI,
   accessoriesUI,
-  permAddressUI,
-  tempAddressUI,
-  selectedAddressUI,
+  addressUI,
 } = UIDefinitions.sharedUISchemas;
 
 const formChapters = {
@@ -78,7 +73,7 @@ const formConfig = {
     veteranInformationChapter: {
       title: formChapters.veteranInformation,
       pages: {
-        [formPages.personalDetails]: {
+        personalDetails: {
           path: 'veteran-information',
           title: formPages.personalDetails,
           uiSchema: {
@@ -89,21 +84,22 @@ const formConfig = {
             properties: {},
           },
         },
-        [formPages.address]: {
+        address: {
           path: 'veteran-information/addresses',
           title: formPages.address,
           uiSchema: {
-            [permAddressField]: permAddressUI,
-            [tempAddressField]: tempAddressUI,
-            [selectedAddressField]: selectedAddressUI,
+            address: addressUI,
             [emailField]: emailUI,
           },
           schema: {
             type: 'object',
             properties: {
-              [permAddressField]: addressSchema,
-              [tempAddressField]: addressSchema,
-              [selectedAddressField]: selectedAddress,
+              address: {
+                type: 'object',
+                properties: {
+                  address: addressSchema,
+                },
+              },
               [emailField]: email,
             },
           },
